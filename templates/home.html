@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <title>Input from for Prediction</title>
+    <style>
+        body {
+            background-color: #dfe6e9;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            text-align: center;
+            border: 50px solid #b2bec3;
+        }
+
+        .title {
+            margin: 10px;
+            padding: 10px;
+
+        }
+
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance: none;
+            appearance: none;
+            outline: 0;
+            box-shadow: none;
+            border: 0 !important;
+            background: #2c3e50;
+            background-image: none;
+        }
+
+        /* Remove IE arrow */
+        select::-ms-expand {
+            display: none;
+        }
+
+        /* Custom Select */
+        .select {
+            position: relative;
+            display: flex;
+            width: 20em;
+            height: 3em;
+            line-height: 3;
+            background: #2c3e50;
+            overflow: hidden;
+            border-radius: .25em;
+        }
+
+        select {
+            flex: 1;
+            padding: 0 .5em;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Arrow */
+        .select::after {
+            content: '\25BC';
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0 1em;
+            background: #34495e;
+            cursor: pointer;
+            pointer-events: none;
+            -webkit-transition: .25s all ease;
+            -o-transition: .25s all ease;
+            transition: .25s all ease;
+        }
+
+        /* Transition */
+        .select:hover::after {
+            color: #f39c12;
+        }
+
+        input {
+            background-color: #2c3e50;
+            border: none;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        input::after {
+            background-color: #2c3e50;
+            border: none;
+        }
+
+        label {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title" style="text-align: center;">
+        <h1>
+            Check Your Suicide Risk
+        </h1>
+    </div>
+
+    <div class="form">
+        <form action="{% url 'result' %}">
+
+            {% csrf_token %}
+            <label>Your Age group:</label> :<br>
+            <select type="text" placeholder="Age_group" required name="Age_group">
+                <option selected disabled>Choose an option</option>
+                <option value="1">1-10</option>
+                <option value="2">11-20</option>
+                <option value="3">21-30</option>
+                <option value="4">31-40</option>
+                <option value="5">41-50</option>
+                <option value="6">50+</option>
+
+            </select>
+            <br><br>
+            <label>Your Gender:</label> <br><select class="mdb-select md-form" type="text" required name="Gender">
+                <option selected disabled>Choose an option</option>
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+            </select>
+            <br><br>
+            <label>Your Marital Status?</label> <br> <select type="text" required name="Marital_status">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Married</option>
+                <option value="0">Unmarried</option>
+            </select>
+            <br><br>
+            <label>Your Occupation:</label><br> <select type="text" required name="Occupation">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Student</option>
+                <option value="2">Housewife</option>
+                <option value="3">Business</option>
+                <option value="4">Teacher</option>
+                <option value="5">Entrepreneur</option>
+                <option value="6">Engineer</option>
+                <option value="7">Doctor</option>
+                <option value="8">Unemployed</option>
+                <option value="9">Job Holder</option>
+                <option value="10">Day Labour</option>
+                <option value="11">Banker</option>
+                <option value="12">Farmer</option>
+                <option value="13">Garments Worker</option>
+            </select>
+            <br><br>
+            <label>Do you have any kinds of problem with your family? </label><br> <select type="text" required
+                name="Problem_with_family">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+            <br><br>
+            <label>Are you dissatisfied with your married Life?(Choose "No" if you're Unmarried)</label><br>
+            <select type="text" required name="Marital_dissatisfaction">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+            <br><br>
+            <label> Are you facing or recently faced any problem in your Love life?(E.g. BreakUp, cheating
+                e.t.c)</label>
+            <br><select type="text" required name="Relationship_problem">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <br><br>
+            <label>Did you recently fail or get an unexpected Grade in any public Exam?</label><br> <select type="text"
+                required name="Unexpected_result_or_failed in exam">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+
+            <br><br>
+            <label> Are you a victim of Sexual harassment?</label> <br>
+            <select type="text" required name="Sexual_harassment">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+            <br><br>
+            <label> Do you facing any kinds of Problem in your workspace?(Choose "No" if you're unemployed)</label> <br>
+            <select type="text" required name="Problem_in_workspace">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <br><br>
+            <label>Are you a victim of domestic violation? (e.g:Victim of political oppression,social
+                injustice,Blackmailing
+                e.t.c)</label> <br>
+            <select type="text" required name="Victim_of_domestic_violation">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+            <br><br>
+            <label>Are you suffering from any chronic physical illness? (e.g. HIV-AIDS,Cancer,High Blood
+                Pressure,Diabetics)</label>
+            <br> <select type="text" required name="Chronic_physical_illness">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+            <br><br>
+            <label>Do you have any financial constraints?</label><br>
+            <select type="text" required name="financial_constraint">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <br><br>
+            <label> Do you consider yourself Depressed? </label>
+            <br><select type="text" required name="Depressed">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <br><br>
+            <label> Are you struggling to pay any of your dept(If you have any)?</label>
+            <br> <select type="text" required name="Struggled_with_dept">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+
+            <br><br>
+            <label> Do you have any mental illness?(e.g. Anxiety disorders,bipolar disorder,Post-traumatic stress
+                disorder,e.t.c) </label><br>
+            <select type="text" required name="Mentall_illness_apart_from depression">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <br><br>
+            <label>Are you struggling to find job?</label> <br>
+            <select type="text" required name="Not_getting_job">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <br><br>
+            <label> Are you victim of false allegation?</label>
+            <br><select type="text" required name="False_allegation">
+                <option selected disabled>Choose an option</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <br><br>
+            <button class="btn btn-primary active" type="submit" name="" value="Submit">Submit </button><br><br>
+
+        </form>
+    </div>
+</body>
+
+</html>
